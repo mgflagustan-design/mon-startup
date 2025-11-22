@@ -97,3 +97,4 @@ mon-startup/
 └── server/   # Express API + payments (persists SQLite at server/storage/orders.sqlite)
 ```
 
+# mon-startup
