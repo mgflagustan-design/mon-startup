@@ -1,0 +1,11 @@
+{
+  "name": "mon-startup",
+  "version": "1.0.0",
+  "description": "Full-stack clothing storefront with live payments via Xendit (GCash, QR Ph, online bank transfer), SQLite persistence (sql.js), and React + Tailwind storefront.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

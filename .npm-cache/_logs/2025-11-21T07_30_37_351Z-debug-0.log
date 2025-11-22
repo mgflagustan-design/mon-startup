@@ -1,0 +1,535 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@9.5.1
+2 info using node@v18.16.0
+3 timing npm:load:whichnode Completed in 0ms
+4 timing config:load:defaults Completed in 1ms
+5 timing config:load:file:/usr/local/lib/node_modules/npm/npmrc Completed in 0ms
+6 timing config:load:builtin Completed in 0ms
+7 timing config:load:cli Completed in 1ms
+8 timing config:load:env Completed in 0ms
+9 timing config:load:file:/Users/mongabriellagustan/mon-startup/server/.npmrc Completed in 0ms
+10 timing config:load:project Completed in 1ms
+11 timing config:load:file:/Users/mongabriellagustan/.npmrc Completed in 0ms
+12 timing config:load:user Completed in 0ms
+13 timing config:load:file:/usr/local/etc/npmrc Completed in 0ms
+14 timing config:load:global Completed in 0ms
+15 timing config:load:setEnvs Completed in 0ms
+16 timing config:load Completed in 3ms
+17 timing npm:load:configload Completed in 3ms
+18 timing npm:load:mkdirpcache Completed in 0ms
+19 timing npm:load:mkdirplogs Completed in 0ms
+20 verbose title npm install express cors dotenv sql.js uuid axios nodemailer morgan
+21 verbose argv "install" "express" "cors" "dotenv" "sql.js" "uuid" "axios" "nodemailer" "morgan" "--cache" "/Users/mongabriellagustan/mon-startup/.npm-cache"
+22 timing npm:load:setTitle Completed in 1ms
+23 timing config:load:flatten Completed in 1ms
+24 timing npm:load:display Completed in 1ms
+25 verbose logfile logs-max:10 dir:/Users/mongabriellagustan/mon-startup/.npm-cache/_logs/2025-11-21T07_30_37_351Z-
+26 verbose logfile /Users/mongabriellagustan/mon-startup/.npm-cache/_logs/2025-11-21T07_30_37_351Z-debug-0.log
+27 timing npm:load:logFile Completed in 2ms
+28 timing npm:load:timers Completed in 0ms
+29 timing npm:load:configScope Completed in 0ms
+30 timing npm:load Completed in 8ms
+31 timing arborist:ctor Completed in 0ms
+32 silly logfile done cleaning log files
+33 timing arborist:ctor Completed in 0ms
+34 timing idealTree:init Completed in 106ms
+35 timing idealTree:userRequests Completed in 1ms
+36 silly idealTree buildDeps
+37 silly fetch manifest express@*
+38 http fetch GET 200 https://registry.npmjs.org/express 6ms (cache hit)
+39 silly fetch manifest cors@*
+40 http fetch GET 200 https://registry.npmjs.org/cors 2ms (cache hit)
+41 silly fetch manifest dotenv@*
+42 http fetch GET 200 https://registry.npmjs.org/dotenv 2ms (cache hit)
+43 silly fetch manifest sql.js@*
+44 http fetch GET 200 https://registry.npmjs.org/sql.js 389ms (cache miss)
+45 silly fetch manifest uuid@*
+46 http fetch GET 200 https://registry.npmjs.org/uuid 3ms (cache hit)
+47 silly fetch manifest axios@*
+48 http fetch GET 200 https://registry.npmjs.org/axios 3ms (cache hit)
+49 silly fetch manifest nodemailer@*
+50 http fetch GET 200 https://registry.npmjs.org/nodemailer 3ms (cache hit)
+51 silly fetch manifest morgan@*
+52 http fetch GET 200 https://registry.npmjs.org/morgan 3ms (cache hit)
+53 silly placeDep ROOT axios@1.13.2 REPLACE for: server@1.0.0 want: *
+54 silly placeDep ROOT cors@2.8.5 REPLACE for: server@1.0.0 want: *
+55 silly placeDep ROOT dotenv@17.2.3 REPLACE for: server@1.0.0 want: *
+56 silly placeDep ROOT express@5.1.0 REPLACE for: server@1.0.0 want: *
+57 silly placeDep ROOT morgan@1.10.1 REPLACE for: server@1.0.0 want: *
+58 silly placeDep ROOT nodemailer@7.0.10 REPLACE for: server@1.0.0 want: *
+59 silly placeDep ROOT sql.js@1.13.0 OK for: server@1.0.0 want: *
+60 silly placeDep ROOT uuid@13.0.0 REPLACE for: server@1.0.0 want: *
+61 timing idealTree:#root Completed in 432ms
+62 timing idealTree:node_modules/axios Completed in 0ms
+63 timing idealTree:node_modules/cors Completed in 0ms
+64 timing idealTree:node_modules/dotenv Completed in 0ms
+65 timing idealTree:node_modules/express Completed in 0ms
+66 timing idealTree:node_modules/morgan Completed in 0ms
+67 timing idealTree:node_modules/nodemailer Completed in 0ms
+68 timing idealTree:node_modules/sql.js Completed in 0ms
+69 timing idealTree:node_modules/uuid Completed in 0ms
+70 timing idealTree:buildDeps Completed in 432ms
+71 timing idealTree:fixDepFlags Completed in 3ms
+72 timing idealTree Completed in 544ms
+73 timing reify:loadTrees Completed in 544ms
+74 timing reify:diffTrees Completed in 3ms
+75 silly reify mark retired [ '/Users/mongabriellagustan/mon-startup/server/node_modules/abbrev' ]
+76 silly reify mark retired [
+76 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/agent-base'
+76 silly reify ]
+77 silly reify mark retired [
+77 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/agentkeepalive'
+77 silly reify ]
+78 silly reify mark retired [
+78 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/ansi-regex'
+78 silly reify ]
+79 silly reify mark retired [
+79 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/aggregate-error'
+79 silly reify ]
+80 silly reify mark retired [ '/Users/mongabriellagustan/mon-startup/server/node_modules/aproba' ]
+81 silly reify mark retired [
+81 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/are-we-there-yet'
+81 silly reify ]
+82 silly reify mark retired [ '/Users/mongabriellagustan/mon-startup/server/node_modules/axios' ]
+83 silly reify mark retired [
+83 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/balanced-match'
+83 silly reify ]
+84 silly reify mark retired [
+84 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/bindings'
+84 silly reify ]
+85 silly reify mark retired [
+85 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/base64-js'
+85 silly reify ]
+86 silly reify mark retired [ '/Users/mongabriellagustan/mon-startup/server/node_modules/bl' ]
+87 silly reify mark retired [
+87 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/brace-expansion'
+87 silly reify ]
+88 silly reify mark retired [ '/Users/mongabriellagustan/mon-startup/server/node_modules/cacache' ]
+89 silly reify mark retired [ '/Users/mongabriellagustan/mon-startup/server/node_modules/buffer' ]
+90 silly reify mark retired [ '/Users/mongabriellagustan/mon-startup/server/node_modules/chownr' ]
+91 silly reify mark retired [
+91 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/clean-stack'
+91 silly reify ]
+92 silly reify mark retired [
+92 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/color-support',
+92 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/color-support'
+92 silly reify ]
+93 silly reify mark retired [
+93 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/concat-map'
+93 silly reify ]
+94 silly reify mark retired [
+94 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/console-control-strings'
+94 silly reify ]
+95 silly reify mark retired [
+95 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/decompress-response'
+95 silly reify ]
+96 silly reify mark retired [ '/Users/mongabriellagustan/mon-startup/server/node_modules/cors' ]
+97 silly reify mark retired [
+97 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/delegates'
+97 silly reify ]
+98 silly reify mark retired [
+98 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/deep-extend'
+98 silly reify ]
+99 silly reify mark retired [
+99 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/detect-libc'
+99 silly reify ]
+100 silly reify mark retired [ '/Users/mongabriellagustan/mon-startup/server/node_modules/dotenv' ]
+101 silly reify mark retired [
+101 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/emoji-regex'
+101 silly reify ]
+102 silly reify mark retired [
+102 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/env-paths'
+102 silly reify ]
+103 silly reify mark retired [
+103 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/err-code'
+103 silly reify ]
+104 silly reify mark retired [
+104 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/encoding'
+104 silly reify ]
+105 silly reify mark retired [
+105 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/end-of-stream'
+105 silly reify ]
+106 silly reify mark retired [ '/Users/mongabriellagustan/mon-startup/server/node_modules/express' ]
+107 silly reify mark retired [
+107 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/file-uri-to-path'
+107 silly reify ]
+108 silly reify mark retired [
+108 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/expand-template'
+108 silly reify ]
+109 silly reify mark retired [
+109 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/fs-minipass'
+109 silly reify ]
+110 silly reify mark retired [
+110 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/fs.realpath'
+110 silly reify ]
+111 silly reify mark retired [
+111 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/fs-constants'
+111 silly reify ]
+112 silly reify mark retired [ '/Users/mongabriellagustan/mon-startup/server/node_modules/gauge' ]
+113 silly reify mark retired [
+113 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/github-from-package'
+113 silly reify ]
+114 silly reify mark retired [ '/Users/mongabriellagustan/mon-startup/server/node_modules/glob' ]
+115 silly reify mark retired [
+115 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/graceful-fs'
+115 silly reify ]
+116 silly reify mark retired [
+116 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/http-proxy-agent'
+116 silly reify ]
+117 silly reify mark retired [
+117 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/https-proxy-agent'
+117 silly reify ]
+118 silly reify mark retired [ '/Users/mongabriellagustan/mon-startup/server/node_modules/ieee754' ]
+119 silly reify mark retired [
+119 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/http-cache-semantics'
+119 silly reify ]
+120 silly reify mark retired [
+120 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/infer-owner'
+120 silly reify ]
+121 silly reify mark retired [
+121 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/has-unicode'
+121 silly reify ]
+122 silly reify mark retired [
+122 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/indent-string'
+122 silly reify ]
+123 silly reify mark retired [
+123 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/inflight'
+123 silly reify ]
+124 silly reify mark retired [
+124 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/humanize-ms'
+124 silly reify ]
+125 silly reify mark retired [ '/Users/mongabriellagustan/mon-startup/server/node_modules/ini' ]
+126 silly reify mark retired [
+126 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/imurmurhash'
+126 silly reify ]
+127 silly reify mark retired [
+127 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/ip-address'
+127 silly reify ]
+128 silly reify mark retired [
+128 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/is-fullwidth-code-point'
+128 silly reify ]
+129 silly reify mark retired [
+129 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/is-lambda'
+129 silly reify ]
+130 silly reify mark retired [ '/Users/mongabriellagustan/mon-startup/server/node_modules/isexe' ]
+131 silly reify mark retired [
+131 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/lru-cache'
+131 silly reify ]
+132 silly reify mark retired [
+132 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/make-fetch-happen'
+132 silly reify ]
+133 silly reify mark retired [
+133 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/mimic-response'
+133 silly reify ]
+134 silly reify mark retired [
+134 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/minimatch'
+134 silly reify ]
+135 silly reify mark retired [
+135 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/minipass'
+135 silly reify ]
+136 silly reify mark retired [
+136 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/minipass-collect'
+136 silly reify ]
+137 silly reify mark retired [
+137 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/minimist'
+137 silly reify ]
+138 silly reify mark retired [
+138 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/minipass-fetch'
+138 silly reify ]
+139 silly reify mark retired [
+139 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/minipass-sized'
+139 silly reify ]
+140 silly reify mark retired [
+140 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/minipass-pipeline'
+140 silly reify ]
+141 silly reify mark retired [
+141 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/minipass-flush'
+141 silly reify ]
+142 silly reify mark retired [
+142 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/minizlib'
+142 silly reify ]
+143 silly reify mark retired [
+143 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/mkdirp',
+143 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/mkdirp'
+143 silly reify ]
+144 silly reify mark retired [
+144 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/mkdirp-classic'
+144 silly reify ]
+145 silly reify mark retired [ '/Users/mongabriellagustan/mon-startup/server/node_modules/morgan' ]
+146 silly reify mark retired [
+146 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/node-abi'
+146 silly reify ]
+147 silly reify mark retired [
+147 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/napi-build-utils'
+147 silly reify ]
+148 silly reify mark retired [
+148 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/node-addon-api'
+148 silly reify ]
+149 silly reify mark retired [
+149 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/node-gyp',
+149 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/node-gyp'
+149 silly reify ]
+150 silly reify mark retired [
+150 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/nodemailer'
+150 silly reify ]
+151 silly reify mark retired [ '/Users/mongabriellagustan/mon-startup/server/node_modules/npmlog' ]
+152 silly reify mark retired [
+152 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/nopt',
+152 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/nopt'
+152 silly reify ]
+153 silly reify mark retired [ '/Users/mongabriellagustan/mon-startup/server/node_modules/p-map' ]
+154 silly reify mark retired [
+154 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/path-is-absolute'
+154 silly reify ]
+155 silly reify mark retired [
+155 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/prebuild-install',
+155 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/prebuild-install'
+155 silly reify ]
+156 silly reify mark retired [
+156 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/promise-inflight'
+156 silly reify ]
+157 silly reify mark retired [
+157 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/promise-retry'
+157 silly reify ]
+158 silly reify mark retired [ '/Users/mongabriellagustan/mon-startup/server/node_modules/pump' ]
+159 silly reify mark retired [
+159 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/rc',
+159 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/rc'
+159 silly reify ]
+160 silly reify mark retired [ '/Users/mongabriellagustan/mon-startup/server/node_modules/retry' ]
+161 silly reify mark retired [
+161 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/readable-stream'
+161 silly reify ]
+162 silly reify mark retired [
+162 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/rimraf',
+162 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/rimraf'
+162 silly reify ]
+163 silly reify mark retired [
+163 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/semver',
+163 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/semver'
+163 silly reify ]
+164 silly reify mark retired [
+164 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/set-blocking'
+164 silly reify ]
+165 silly reify mark retired [
+165 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/signal-exit'
+165 silly reify ]
+166 silly reify mark retired [
+166 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/simple-get'
+166 silly reify ]
+167 silly reify mark retired [ '/Users/mongabriellagustan/mon-startup/server/node_modules/socks' ]
+168 silly reify mark retired [
+168 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/simple-concat'
+168 silly reify ]
+169 silly reify mark retired [
+169 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/smart-buffer'
+169 silly reify ]
+170 silly reify mark retired [
+170 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/socks-proxy-agent'
+170 silly reify ]
+171 silly reify mark retired [ '/Users/mongabriellagustan/mon-startup/server/node_modules/ssri' ]
+172 silly reify mark retired [ '/Users/mongabriellagustan/mon-startup/server/node_modules/sqlite' ]
+173 silly reify mark retired [ '/Users/mongabriellagustan/mon-startup/server/node_modules/sqlite3' ]
+174 silly reify mark retired [
+174 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/strip-ansi'
+174 silly reify ]
+175 silly reify mark retired [
+175 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/string_decoder'
+175 silly reify ]
+176 silly reify mark retired [
+176 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/string-width'
+176 silly reify ]
+177 silly reify mark retired [
+177 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/strip-json-comments'
+177 silly reify ]
+178 silly reify mark retired [ '/Users/mongabriellagustan/mon-startup/server/node_modules/tar' ]
+179 silly reify mark retired [ '/Users/mongabriellagustan/mon-startup/server/node_modules/tar-fs' ]
+180 silly reify mark retired [
+180 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/tar-stream'
+180 silly reify ]
+181 silly reify mark retired [
+181 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/tunnel-agent'
+181 silly reify ]
+182 silly reify mark retired [
+182 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/unique-slug'
+182 silly reify ]
+183 silly reify mark retired [
+183 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/unique-filename'
+183 silly reify ]
+184 silly reify mark retired [
+184 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/util-deprecate'
+184 silly reify ]
+185 silly reify mark retired [
+185 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/uuid',
+185 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/uuid'
+185 silly reify ]
+186 silly reify mark retired [
+186 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/which',
+186 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/node-which'
+186 silly reify ]
+187 silly reify mark retired [
+187 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/wide-align'
+187 silly reify ]
+188 silly reify mark retired [ '/Users/mongabriellagustan/mon-startup/server/node_modules/yallist' ]
+189 silly reify mark retired [
+189 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/@gar/promisify'
+189 silly reify ]
+190 silly reify mark retired [
+190 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/@npmcli/fs'
+190 silly reify ]
+191 silly reify mark retired [
+191 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/@npmcli/move-file'
+191 silly reify ]
+192 silly reify mark retired [
+192 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/@tootallnate/once'
+192 silly reify ]
+193 silly reify moves {
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/abbrev': '/Users/mongabriellagustan/mon-startup/server/node_modules/.abbrev-ABGtLaZ6',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/agent-base': '/Users/mongabriellagustan/mon-startup/server/node_modules/.agent-base-HoReguNS',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/agentkeepalive': '/Users/mongabriellagustan/mon-startup/server/node_modules/.agentkeepalive-lfUxctn3',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/ansi-regex': '/Users/mongabriellagustan/mon-startup/server/node_modules/.ansi-regex-SsZ6qmY6',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/aggregate-error': '/Users/mongabriellagustan/mon-startup/server/node_modules/.aggregate-error-LaOqPrGI',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/aproba': '/Users/mongabriellagustan/mon-startup/server/node_modules/.aproba-gjzi9Pos',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/are-we-there-yet': '/Users/mongabriellagustan/mon-startup/server/node_modules/.are-we-there-yet-J9K8Xwqo',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/axios': '/Users/mongabriellagustan/mon-startup/server/node_modules/.axios-lCUCBMIZ',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/balanced-match': '/Users/mongabriellagustan/mon-startup/server/node_modules/.balanced-match-kF6vbD9g',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/bindings': '/Users/mongabriellagustan/mon-startup/server/node_modules/.bindings-3piEMkUu',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/base64-js': '/Users/mongabriellagustan/mon-startup/server/node_modules/.base64-js-27HUMjB0',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/bl': '/Users/mongabriellagustan/mon-startup/server/node_modules/.bl-CjhqsMxQ',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/brace-expansion': '/Users/mongabriellagustan/mon-startup/server/node_modules/.brace-expansion-no3A7jG3',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/cacache': '/Users/mongabriellagustan/mon-startup/server/node_modules/.cacache-JcCc8HAN',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/buffer': '/Users/mongabriellagustan/mon-startup/server/node_modules/.buffer-zAx7nz0V',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/chownr': '/Users/mongabriellagustan/mon-startup/server/node_modules/.chownr-0g5MVOYP',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/clean-stack': '/Users/mongabriellagustan/mon-startup/server/node_modules/.clean-stack-R7Q2Qc9R',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/color-support': '/Users/mongabriellagustan/mon-startup/server/node_modules/.color-support-kMBEttkb',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/color-support': '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/.color-support-h2QWJpY1',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/concat-map': '/Users/mongabriellagustan/mon-startup/server/node_modules/.concat-map-C9SyFIIM',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/console-control-strings': '/Users/mongabriellagustan/mon-startup/server/node_modules/.console-control-strings-j1Ijf5qv',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/decompress-response': '/Users/mongabriellagustan/mon-startup/server/node_modules/.decompress-response-lEDZGtSg',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/cors': '/Users/mongabriellagustan/mon-startup/server/node_modules/.cors-POOwnBu8',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/delegates': '/Users/mongabriellagustan/mon-startup/server/node_modules/.delegates-CfASsouL',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/deep-extend': '/Users/mongabriellagustan/mon-startup/server/node_modules/.deep-extend-VpY1Ii5e',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/detect-libc': '/Users/mongabriellagustan/mon-startup/server/node_modules/.detect-libc-ncP4YrXO',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/dotenv': '/Users/mongabriellagustan/mon-startup/server/node_modules/.dotenv-ik5iFeiE',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/emoji-regex': '/Users/mongabriellagustan/mon-startup/server/node_modules/.emoji-regex-uWNcGDeJ',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/env-paths': '/Users/mongabriellagustan/mon-startup/server/node_modules/.env-paths-mMzlK89E',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/err-code': '/Users/mongabriellagustan/mon-startup/server/node_modules/.err-code-EHTsbAVH',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/encoding': '/Users/mongabriellagustan/mon-startup/server/node_modules/.encoding-y0wjdhnk',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/end-of-stream': '/Users/mongabriellagustan/mon-startup/server/node_modules/.end-of-stream-rRboCgat',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/express': '/Users/mongabriellagustan/mon-startup/server/node_modules/.express-HjcH27sW',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/file-uri-to-path': '/Users/mongabriellagustan/mon-startup/server/node_modules/.file-uri-to-path-spzm3JBr',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/expand-template': '/Users/mongabriellagustan/mon-startup/server/node_modules/.expand-template-4a2p9O8K',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/fs-minipass': '/Users/mongabriellagustan/mon-startup/server/node_modules/.fs-minipass-Uy9i1xel',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/fs.realpath': '/Users/mongabriellagustan/mon-startup/server/node_modules/.fs.realpath-uRnhPjcB',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/fs-constants': '/Users/mongabriellagustan/mon-startup/server/node_modules/.fs-constants-Br6WzoPl',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/gauge': '/Users/mongabriellagustan/mon-startup/server/node_modules/.gauge-ZlI1gCSw',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/github-from-package': '/Users/mongabriellagustan/mon-startup/server/node_modules/.github-from-package-WvWiZfaZ',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/glob': '/Users/mongabriellagustan/mon-startup/server/node_modules/.glob-Vw8Bok0M',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/graceful-fs': '/Users/mongabriellagustan/mon-startup/server/node_modules/.graceful-fs-GnzXmWOY',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/http-proxy-agent': '/Users/mongabriellagustan/mon-startup/server/node_modules/.http-proxy-agent-IlqlWGqM',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/https-proxy-agent': '/Users/mongabriellagustan/mon-startup/server/node_modules/.https-proxy-agent-5cUXNJ8D',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/ieee754': '/Users/mongabriellagustan/mon-startup/server/node_modules/.ieee754-kWfjgbQ9',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/http-cache-semantics': '/Users/mongabriellagustan/mon-startup/server/node_modules/.http-cache-semantics-meQDG4VV',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/infer-owner': '/Users/mongabriellagustan/mon-startup/server/node_modules/.infer-owner-N4FeIL3w',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/has-unicode': '/Users/mongabriellagustan/mon-startup/server/node_modules/.has-unicode-VcyYLM0S',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/indent-string': '/Users/mongabriellagustan/mon-startup/server/node_modules/.indent-string-znRT2PT3',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/inflight': '/Users/mongabriellagustan/mon-startup/server/node_modules/.inflight-FYqWzxmI',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/humanize-ms': '/Users/mongabriellagustan/mon-startup/server/node_modules/.humanize-ms-qK0UKUcf',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/ini': '/Users/mongabriellagustan/mon-startup/server/node_modules/.ini-3NMkdYww',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/imurmurhash': '/Users/mongabriellagustan/mon-startup/server/node_modules/.imurmurhash-LWCCvJEC',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/ip-address': '/Users/mongabriellagustan/mon-startup/server/node_modules/.ip-address-JKUTkXgI',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/is-fullwidth-code-point': '/Users/mongabriellagustan/mon-startup/server/node_modules/.is-fullwidth-code-point-5qJXNe6S',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/is-lambda': '/Users/mongabriellagustan/mon-startup/server/node_modules/.is-lambda-B0kRWEj5',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/isexe': '/Users/mongabriellagustan/mon-startup/server/node_modules/.isexe-cvLCuD6Z',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/lru-cache': '/Users/mongabriellagustan/mon-startup/server/node_modules/.lru-cache-gY7uLZmv',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/make-fetch-happen': '/Users/mongabriellagustan/mon-startup/server/node_modules/.make-fetch-happen-PygplEGG',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/mimic-response': '/Users/mongabriellagustan/mon-startup/server/node_modules/.mimic-response-pitRto6w',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/minimatch': '/Users/mongabriellagustan/mon-startup/server/node_modules/.minimatch-kEt6LxYz',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/minipass': '/Users/mongabriellagustan/mon-startup/server/node_modules/.minipass-JCEEnDxM',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/minipass-collect': '/Users/mongabriellagustan/mon-startup/server/node_modules/.minipass-collect-Mnw6ivN8',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/minimist': '/Users/mongabriellagustan/mon-startup/server/node_modules/.minimist-YsL5CHXw',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/minipass-fetch': '/Users/mongabriellagustan/mon-startup/server/node_modules/.minipass-fetch-FsNg8VxA',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/minipass-sized': '/Users/mongabriellagustan/mon-startup/server/node_modules/.minipass-sized-wkL8LeRl',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/minipass-pipeline': '/Users/mongabriellagustan/mon-startup/server/node_modules/.minipass-pipeline-9O7QoMXW',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/minipass-flush': '/Users/mongabriellagustan/mon-startup/server/node_modules/.minipass-flush-WS9G9ySP',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/minizlib': '/Users/mongabriellagustan/mon-startup/server/node_modules/.minizlib-doZj0ZiW',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/mkdirp': '/Users/mongabriellagustan/mon-startup/server/node_modules/.mkdirp-Q6pjWblU',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/mkdirp': '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/.mkdirp-gJS6BIh3',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/mkdirp-classic': '/Users/mongabriellagustan/mon-startup/server/node_modules/.mkdirp-classic-DoSE8zMS',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/morgan': '/Users/mongabriellagustan/mon-startup/server/node_modules/.morgan-YVceL82k',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/node-abi': '/Users/mongabriellagustan/mon-startup/server/node_modules/.node-abi-tT7fgZvQ',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/napi-build-utils': '/Users/mongabriellagustan/mon-startup/server/node_modules/.napi-build-utils-QkO0LXWW',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/node-addon-api': '/Users/mongabriellagustan/mon-startup/server/node_modules/.node-addon-api-JnTh4axD',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/node-gyp': '/Users/mongabriellagustan/mon-startup/server/node_modules/.node-gyp-VP1ICMNu',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/node-gyp': '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/.node-gyp-iWBiJdoq',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/nodemailer': '/Users/mongabriellagustan/mon-startup/server/node_modules/.nodemailer-dqPLi59i',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/npmlog': '/Users/mongabriellagustan/mon-startup/server/node_modules/.npmlog-3fR9Jzhn',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/nopt': '/Users/mongabriellagustan/mon-startup/server/node_modules/.nopt-dLSauExO',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/nopt': '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/.nopt-5PxZOdAZ',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/p-map': '/Users/mongabriellagustan/mon-startup/server/node_modules/.p-map-QGVy4gtH',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/path-is-absolute': '/Users/mongabriellagustan/mon-startup/server/node_modules/.path-is-absolute-u4ULK76G',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/prebuild-install': '/Users/mongabriellagustan/mon-startup/server/node_modules/.prebuild-install-0XwGzg2y',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/prebuild-install': '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/.prebuild-install-ZCwFt28T',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/promise-inflight': '/Users/mongabriellagustan/mon-startup/server/node_modules/.promise-inflight-wd1YqYnM',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/promise-retry': '/Users/mongabriellagustan/mon-startup/server/node_modules/.promise-retry-KKRUV9HJ',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/pump': '/Users/mongabriellagustan/mon-startup/server/node_modules/.pump-5NKSJDdG',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/rc': '/Users/mongabriellagustan/mon-startup/server/node_modules/.rc-1RL6MmhT',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/rc': '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/.rc-YDxKOP3P',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/retry': '/Users/mongabriellagustan/mon-startup/server/node_modules/.retry-0xrL7v49',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/readable-stream': '/Users/mongabriellagustan/mon-startup/server/node_modules/.readable-stream-kBRvJtVf',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/rimraf': '/Users/mongabriellagustan/mon-startup/server/node_modules/.rimraf-OQs9syeL',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/rimraf': '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/.rimraf-WRRCmwbx',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/semver': '/Users/mongabriellagustan/mon-startup/server/node_modules/.semver-RZh4qBfS',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/semver': '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/.semver-qzT6hypi',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/set-blocking': '/Users/mongabriellagustan/mon-startup/server/node_modules/.set-blocking-gXuNobGh',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/signal-exit': '/Users/mongabriellagustan/mon-startup/server/node_modules/.signal-exit-Gf36PAn8',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/simple-get': '/Users/mongabriellagustan/mon-startup/server/node_modules/.simple-get-yNgKCqnx',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/socks': '/Users/mongabriellagustan/mon-startup/server/node_modules/.socks-3mjU88vg',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/simple-concat': '/Users/mongabriellagustan/mon-startup/server/node_modules/.simple-concat-hKvVaBEr',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/smart-buffer': '/Users/mongabriellagustan/mon-startup/server/node_modules/.smart-buffer-TxkthJIH',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/socks-proxy-agent': '/Users/mongabriellagustan/mon-startup/server/node_modules/.socks-proxy-agent-UxjZa2Er',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/ssri': '/Users/mongabriellagustan/mon-startup/server/node_modules/.ssri-eU5KxbRV',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/sqlite': '/Users/mongabriellagustan/mon-startup/server/node_modules/.sqlite-MGWJaQTs',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/sqlite3': '/Users/mongabriellagustan/mon-startup/server/node_modules/.sqlite3-LmloWh6a',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/strip-ansi': '/Users/mongabriellagustan/mon-startup/server/node_modules/.strip-ansi-iOw8r6AI',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/string_decoder': '/Users/mongabriellagustan/mon-startup/server/node_modules/.string_decoder-O1El4vAC',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/string-width': '/Users/mongabriellagustan/mon-startup/server/node_modules/.string-width-HdbruGK7',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/strip-json-comments': '/Users/mongabriellagustan/mon-startup/server/node_modules/.strip-json-comments-CLxWtZ3k',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/tar': '/Users/mongabriellagustan/mon-startup/server/node_modules/.tar-AksZzgNx',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/tar-fs': '/Users/mongabriellagustan/mon-startup/server/node_modules/.tar-fs-vHb0Fa0E',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/tar-stream': '/Users/mongabriellagustan/mon-startup/server/node_modules/.tar-stream-DejfoU7d',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/tunnel-agent': '/Users/mongabriellagustan/mon-startup/server/node_modules/.tunnel-agent-XBu7ZceR',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/unique-slug': '/Users/mongabriellagustan/mon-startup/server/node_modules/.unique-slug-lhpx6PIM',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/unique-filename': '/Users/mongabriellagustan/mon-startup/server/node_modules/.unique-filename-isjKIHoC',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/util-deprecate': '/Users/mongabriellagustan/mon-startup/server/node_modules/.util-deprecate-qqcumCNe',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/uuid': '/Users/mongabriellagustan/mon-startup/server/node_modules/.uuid-fQr1FK47',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/uuid': '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/.uuid-UqTBuPqL',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/which': '/Users/mongabriellagustan/mon-startup/server/node_modules/.which-Dk2NXohF',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/node-which': '/Users/mongabriellagustan/mon-startup/server/node_modules/.bin/.node-which-WsPxzsu6',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/wide-align': '/Users/mongabriellagustan/mon-startup/server/node_modules/.wide-align-3O9GUyGd',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/yallist': '/Users/mongabriellagustan/mon-startup/server/node_modules/.yallist-Let3InvR',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/@gar/promisify': '/Users/mongabriellagustan/mon-startup/server/node_modules/@gar/.promisify-ZbwjpMBD',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/@npmcli/fs': '/Users/mongabriellagustan/mon-startup/server/node_modules/@npmcli/.fs-L4HOujuD',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/@npmcli/move-file': '/Users/mongabriellagustan/mon-startup/server/node_modules/@npmcli/.move-file-VpuiX080',
+193 silly reify   '/Users/mongabriellagustan/mon-startup/server/node_modules/@tootallnate/once': '/Users/mongabriellagustan/mon-startup/server/node_modules/@tootallnate/.once-rwUqBjui'
+193 silly reify }
+194 timing reify:rollback:retireShallow Completed in 17ms
+195 timing command:install Completed in 590ms
+196 verbose stack Error: ENOTEMPTY: directory not empty, rename '/Users/mongabriellagustan/mon-startup/server/node_modules/axios' -> '/Users/mongabriellagustan/mon-startup/server/node_modules/.axios-lCUCBMIZ'
+197 verbose cwd /Users/mongabriellagustan/mon-startup/server
+198 verbose Darwin 24.6.0
+199 verbose node v18.16.0
+200 verbose npm  v9.5.1
+201 error code ENOTEMPTY
+202 error syscall rename
+203 error path /Users/mongabriellagustan/mon-startup/server/node_modules/axios
+204 error dest /Users/mongabriellagustan/mon-startup/server/node_modules/.axios-lCUCBMIZ
+205 error errno -66
+206 error ENOTEMPTY: directory not empty, rename '/Users/mongabriellagustan/mon-startup/server/node_modules/axios' -> '/Users/mongabriellagustan/mon-startup/server/node_modules/.axios-lCUCBMIZ'
+207 verbose exit -66
+208 timing npm Completed in 605ms
+209 verbose unfinished npm timer reify 1763710237365
+210 verbose unfinished npm timer reify:retireShallow 1763710237914
+211 verbose code -66
+212 error A complete log of this run can be found in:
+212 error     /Users/mongabriellagustan/mon-startup/.npm-cache/_logs/2025-11-21T07_30_37_351Z-debug-0.log
