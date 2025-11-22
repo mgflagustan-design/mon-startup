@@ -58,6 +58,15 @@ export function updateOrderStatus(orderId, payload, adminToken) {
 
   const trimmedToken = adminToken.trim();
   
+  // Debug logging in development
+  if (import.meta.env.DEV) {
+    console.log('[API] Updating order status:', {
+      orderId,
+      tokenPrefix: trimmedToken.substring(0, 4) + '...',
+      tokenLength: trimmedToken.length,
+    });
+  }
+  
   return fetch(`${API_BASE}/orders/${orderId}/status`, {
     method: 'PATCH',
     headers: {
