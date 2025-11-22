@@ -3,8 +3,20 @@ const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
 async function handle(response) {
   if (!response.ok) {
     const errorBody = await response.json().catch(() => ({}));
-    const error = new Error(errorBody.message || 'Request failed');
+    let errorMessage = errorBody.message || 'Request failed';
+    
+    // Provide more helpful error messages
+    if (response.status === 0 || response.status >= 500) {
+      errorMessage = 'Unable to connect to the server. Please check if the backend is running and configured correctly.';
+    } else if (response.status === 404) {
+      errorMessage = 'API endpoint not found. Please check your VITE_API_URL configuration.';
+    } else if (response.status === 401) {
+      errorMessage = errorBody.message || 'Authentication failed. Please check your configuration.';
+    }
+    
+    const error = new Error(errorMessage);
     error.details = errorBody;
+    error.status = response.status;
     throw error;
   }
   return response.json();

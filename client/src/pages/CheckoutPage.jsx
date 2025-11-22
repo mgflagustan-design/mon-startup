@@ -46,7 +46,15 @@ export function CheckoutPage() {
       setLastOrderTotal(totals.totalAmount);
       clearCart();
     } catch (err) {
-      setError(err.message);
+      console.error('Checkout error:', err);
+      let errorMessage = err.message || 'Failed to process checkout.';
+      
+      // Check if it's a network/connection error
+      if (err.message?.includes('fetch') || err.status === 0) {
+        errorMessage = 'Unable to connect to the payment server. Please ensure the backend is deployed and VITE_API_URL is configured correctly.';
+      }
+      
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
@@ -149,7 +157,15 @@ export function CheckoutPage() {
           </p>
         </div>
 
-        {error && <p className="rounded-md bg-rose-50 p-3 text-sm text-rose-600">{error}</p>}
+        {error && (
+          <div className="rounded-md bg-rose-50 p-4 text-sm text-rose-600">
+            <p className="font-semibold">Checkout Error</p>
+            <p className="mt-1">{error}</p>
+            <p className="mt-2 text-xs text-rose-500">
+              If you're deploying, make sure your backend is running and VITE_API_URL is set in your environment variables.
+            </p>
+          </div>
+        )}
 
         {['fullName', 'email', 'phone'].map((field) => (
           <label key={field} className="block text-sm font-medium text-gray-600">
