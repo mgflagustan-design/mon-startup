@@ -5,6 +5,7 @@ if (import.meta.env.DEV) {
   console.log('API Base URL:', API_BASE);
 }
 
+
 async function handle(response) {
   if (!response.ok) {
     const errorBody = await response.json().catch(() => ({}));
@@ -58,12 +59,25 @@ export function updateOrderStatus(orderId, payload, adminToken) {
 
   const trimmedToken = adminToken.trim();
   
+  // Base64 encode the token to safely handle any characters (including Unicode)
+  // HTTP headers must only contain ISO-8859-1 characters, so we encode the token
+  // Using encodeURIComponent -> unescape -> btoa to properly handle UTF-8
+  let encodedToken;
+  try {
+    encodedToken = btoa(unescape(encodeURIComponent(trimmedToken)));
+  } catch (err) {
+    // Fallback: if encoding fails, try direct btoa (for ASCII-only tokens)
+    console.warn('[API] Base64 encoding failed, using direct encoding:', err.message);
+    encodedToken = btoa(trimmedToken);
+  }
+  
   // Debug logging in development
   if (import.meta.env.DEV) {
     console.log('[API] Updating order status:', {
       orderId,
       tokenPrefix: trimmedToken.substring(0, 4) + '...',
       tokenLength: trimmedToken.length,
+      encoded: true,
     });
   }
   
@@ -71,7 +85,8 @@ export function updateOrderStatus(orderId, payload, adminToken) {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
-      'x-admin-token': trimmedToken,
+      'x-admin-token': encodedToken,
+      'x-admin-token-encoded': 'base64', // Flag to indicate the token is Base64 encoded
     },
     body: JSON.stringify(payload),
   }).then(handle);

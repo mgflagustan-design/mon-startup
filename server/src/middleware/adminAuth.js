@@ -13,7 +13,23 @@ function adminAuth(req, res, next) {
     (req.headers['authorization'] && req.headers['authorization'].replace(/^Bearer\s+/i, '')) ||
     '';
 
-  const receivedToken = rawToken.trim();
+  // Check if the token is Base64 encoded (indicated by the x-admin-token-encoded header)
+  const isEncoded = req.headers['x-admin-token-encoded'] === 'base64' || 
+                    req.headers['X-Admin-Token-Encoded'] === 'base64';
+  
+  let receivedToken;
+  try {
+    if (isEncoded && rawToken) {
+      // Decode Base64 token
+      receivedToken = Buffer.from(rawToken.trim(), 'base64').toString('utf-8');
+    } else {
+      receivedToken = rawToken.trim();
+    }
+  } catch (err) {
+    console.log('[adminAuth] Failed to decode token:', err.message);
+    receivedToken = rawToken.trim(); // Fallback to raw token
+  }
+  
   const expectedToken = env.adminToken.trim();
 
   // Always log authentication attempts (for debugging in production)
