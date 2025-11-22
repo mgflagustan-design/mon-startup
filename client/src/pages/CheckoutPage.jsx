@@ -161,9 +161,15 @@ export function CheckoutPage() {
           <div className="rounded-md bg-rose-50 p-4 text-sm text-rose-600">
             <p className="font-semibold">Checkout Error</p>
             <p className="mt-1">{error}</p>
-            <p className="mt-2 text-xs text-rose-500">
-              If you're deploying, make sure your backend is running and VITE_API_URL is set in your environment variables.
-            </p>
+            <div className="mt-3 space-y-2 text-xs text-rose-500">
+              <p><strong>Current API URL:</strong> {import.meta.env.VITE_API_URL || 'http://localhost:4000/api (default)'}</p>
+              <p className="mt-2"><strong>To fix this:</strong></p>
+              <ol className="ml-4 list-decimal space-y-1">
+                <li>Deploy your backend to Railway/Render (see DEPLOYMENT.md)</li>
+                <li>In Vercel → Settings → Environment Variables, add: <code className="bg-rose-100 px-1 rounded">VITE_API_URL</code> = <code className="bg-rose-100 px-1 rounded">https://your-backend-url.com/api</code></li>
+                <li>Redeploy your Vercel project</li>
+              </ol>
+            </div>
           </div>
         )}
 

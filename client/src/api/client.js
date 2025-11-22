@@ -1,5 +1,10 @@
 const API_BASE = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
 
+// Log API base for debugging (only in development)
+if (import.meta.env.DEV) {
+  console.log('API Base URL:', API_BASE);
+}
+
 async function handle(response) {
   if (!response.ok) {
     const errorBody = await response.json().catch(() => ({}));
