@@ -7,7 +7,8 @@ export function AdminProvider({ children }) {
     return localStorage.getItem('admin-authenticated') === 'true';
   });
   const [adminToken, setAdminToken] = useState(() => {
-    return localStorage.getItem('admin-token') || '';
+    const token = localStorage.getItem('admin-token') || '';
+    return token.trim();
   });
 
   useEffect(() => {
@@ -19,9 +20,10 @@ export function AdminProvider({ children }) {
   }, [isAuthenticated]);
 
   function login(token) {
-    setAdminToken(token);
+    const trimmedToken = token.trim();
+    setAdminToken(trimmedToken);
     setIsAuthenticated(true);
-    localStorage.setItem('admin-token', token);
+    localStorage.setItem('admin-token', trimmedToken);
   }
 
   function logout() {

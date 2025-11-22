@@ -52,11 +52,17 @@ export function getOrders(status) {
 }
 
 export function updateOrderStatus(orderId, payload, adminToken) {
+  if (!adminToken || !adminToken.trim()) {
+    return Promise.reject(new Error('Admin token is required'));
+  }
+
+  const trimmedToken = adminToken.trim();
+  
   return fetch(`${API_BASE}/orders/${orderId}/status`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json',
-      ...(adminToken ? { 'x-admin-token': adminToken } : {}),
+      'x-admin-token': trimmedToken,
     },
     body: JSON.stringify(payload),
   }).then(handle);

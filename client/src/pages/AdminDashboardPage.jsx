@@ -24,8 +24,8 @@ export function AdminDashboardPage() {
   }, [status, refreshKey]);
 
   async function handleStatusUpdate(orderId, nextStatus) {
-    if (!adminToken) {
-      setActionError('Admin token is required to update orders.');
+    if (!adminToken || !adminToken.trim()) {
+      setActionError('Admin token is required. Please log in again at /admin/login');
       return;
     }
 
@@ -33,6 +33,9 @@ export function AdminDashboardPage() {
       setActionError(null);
       setActionMessage(null);
       setActionLoadingId(`${nextStatus}-${orderId}`);
+      
+      console.log('Updating order with token:', adminToken ? 'Token present' : 'No token');
+      
       await updateOrderStatus(
         orderId,
         {
@@ -45,7 +48,14 @@ export function AdminDashboardPage() {
       setRefreshKey((key) => key + 1);
       setTimeout(() => setActionMessage(null), 5000);
     } catch (err) {
-      setActionError(err.message || 'Unable to update order.');
+      console.error('Status update error:', err);
+      let errorMsg = err.message || 'Unable to update order.';
+      
+      if (err.status === 401) {
+        errorMsg = 'Unauthorized. Please check your admin token and log in again at /admin/login';
+      }
+      
+      setActionError(errorMsg);
       setTimeout(() => setActionError(null), 5000);
     } finally {
       setActionLoadingId(null);
@@ -133,6 +143,20 @@ export function AdminDashboardPage() {
         </div>
       )}
 
+      {!adminToken && (
+        <div className="mb-6 rounded-lg bg-amber-50 border border-amber-200 p-4 text-sm text-amber-700">
+          <p className="font-medium">⚠️ Admin token not found</p>
+          <p className="mt-1">You need to log in with your admin token to update orders. Please visit <a href="/admin/login" className="underline font-semibold">/admin/login</a> to authenticate.</p>
+        </div>
+      )}
+
+      {adminToken && (
+        <div className="mb-6 rounded-lg bg-blue-50 border border-blue-200 p-4 text-sm text-blue-700">
+          <p className="font-medium">ℹ️ Using admin token</p>
+          <p className="mt-1 text-xs">Token: {adminToken.substring(0, 4)}...{adminToken.substring(adminToken.length - 2)} (Make sure this matches your backend ADMIN_TOKEN)</p>
+        </div>
+      )}
+
       {!loading && !error && (
         <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
           <div className="overflow-x-auto">
@@ -169,8 +193,9 @@ export function AdminDashboardPage() {
                       {order.status !== 'paid' ? (
                         <button
                           onClick={() => handleStatusUpdate(order.id, 'paid')}
-                          disabled={actionLoadingId === `paid-${order.id}` || !adminToken}
+                          disabled={actionLoadingId === `paid-${order.id}` || !adminToken || !adminToken.trim()}
                           className="rounded-lg bg-brand px-4 py-2 text-xs font-semibold text-white transition hover:bg-brand/90 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-brand/20"
+                          title={!adminToken ? 'Please log in first' : ''}
                         >
                           {actionLoadingId === `paid-${order.id}` ? 'Updating…' : 'Mark as Paid'}
                         </button>
