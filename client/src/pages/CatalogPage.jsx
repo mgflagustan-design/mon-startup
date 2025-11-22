@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ProductCard } from '../components/ProductCard.jsx';
 import { getProducts } from '../api/client.js';
+import { fallbackProducts } from '../data/products.js';
 
 export function CatalogPage() {
   const [products, setProducts] = useState([]);
@@ -10,7 +11,12 @@ export function CatalogPage() {
   useEffect(() => {
     getProducts()
       .then(setProducts)
-      .catch(() => setError('Unable to load products. Please try again later.'))
+      .catch((err) => {
+        console.warn('API failed, using fallback products:', err);
+        // Use fallback products if API fails
+        setProducts(fallbackProducts);
+        setError(null);
+      })
       .finally(() => setLoading(false));
   }, []);
 
