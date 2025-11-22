@@ -2,6 +2,7 @@ services:
   - type: web
     name: mon-startup-api
     env: node
+    rootDir: server
     buildCommand: npm install
     startCommand: npm start
     envVars:
@@ -9,5 +10,11 @@ services:
         value: production
       - key: PORT
         value: 4000
-    # Add other env vars in Render dashboard
+    # Add other env vars in Render dashboard:
+    # - ADMIN_TOKEN
+    # - CLIENT_BASE_URL (your Vercel frontend URL)
+    # - SERVER_BASE_URL (your Render backend URL)
+    # - PAYMENTS_MODE=manual
+    # - MANUAL_QR_IMAGE_URL
+    # - MANUAL_PAYMENT_EMAIL
 
