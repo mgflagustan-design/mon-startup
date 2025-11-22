@@ -71,9 +71,18 @@ Visit `http://localhost:5173`.
 3. Allow-list your production server IP if required.
 
 ### Deployment
-- **Backend:** Deploy Express app on Render, Railway, Fly.io, or similar. Ensure persistent storage for `/server/storage/orders.sqlite` (or swap to hosted Postgres).
-- **Frontend:** Deploy Vite build to Netlify/Vercel/Cloudflare Pages. Configure `VITE_API_URL` to your backend’s `/api` URL.
-- Update `CLIENT_BASE_URL` / `SERVER_BASE_URL` envs on both sides.
+
+See **[DEPLOYMENT.md](./DEPLOYMENT.md)** for detailed deployment instructions.
+
+**Quick Start:**
+- **Frontend:** Deploy to Vercel/Netlify (see `client/vercel.json` or `client/netlify.toml`)
+- **Backend:** Deploy to Railway/Render/Fly.io (see `server/render.yaml` for Render)
+
+**Key Steps:**
+1. Set all environment variables in your hosting platform
+2. Update `CLIENT_BASE_URL` and `SERVER_BASE_URL` to production URLs
+3. Set `VITE_API_URL` in frontend to point to your backend API
+4. Ensure QR code image is accessible at the URL in `MANUAL_QR_IMAGE_URL`
 
 ### Admin Dashboard
 - Visit `/admin` to view all orders (filter by status). List auto-populates with webhook updates.
