@@ -46,7 +46,7 @@ async function start() {
       adminTokenPrefix: isConfigured ? `${env.adminToken.trim().substring(0, 4)}...` : 'not set',
       hint: isConfigured 
         ? 'ADMIN_TOKEN is configured. Use this exact value when logging in at /admin/login'
-        : 'ADMIN_TOKEN is not set. Add it to your environment variables on Render.',
+        : 'ADMIN_TOKEN is not set. Add it to your environment variables on Railway/Render.',
     });
   });
 
