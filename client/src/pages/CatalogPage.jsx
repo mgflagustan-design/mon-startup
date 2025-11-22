@@ -20,27 +20,37 @@ export function CatalogPage() {
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) {
-    return (
-      <div className="py-20 text-center text-gray-500">
-        Loading curated looks...
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="py-20 text-center text-rose-500">
-        {error}
-      </div>
-    );
-  }
-
   return (
-    <div className="grid gap-6 py-10 sm:grid-cols-2 lg:grid-cols-3">
-      {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
-      ))}
+    <div className="py-8">
+      <div className="mb-10 text-center">
+        <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl">
+          Curated Collection
+        </h1>
+        <p className="mt-4 text-lg text-gray-600">
+          Discover premium clothing designed for modern living
+        </p>
+      </div>
+
+      {loading && (
+        <div className="py-20 text-center">
+          <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-brand border-r-transparent"></div>
+          <p className="mt-4 text-gray-500">Loading curated looks...</p>
+        </div>
+      )}
+
+      {error && (
+        <div className="rounded-lg bg-rose-50 p-4 text-center text-rose-600">
+          {error}
+        </div>
+      )}
+
+      {!loading && !error && (
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {products.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </div>
+      )}
     </div>
   );
 }

@@ -10,38 +10,54 @@ export function CartPage() {
   if (!items.length) {
     return (
       <div className="py-20 text-center">
-        <p className="text-lg text-gray-500">Your cart is empty.</p>
-        <button
-          onClick={() => navigate('/')}
-          className="mt-6 rounded-md bg-brand px-6 py-3 text-sm font-semibold text-white"
-        >
-          Browse Products
-        </button>
+        <div className="mx-auto max-w-md">
+          <div className="mb-6 text-6xl">🛒</div>
+          <h2 className="text-2xl font-bold text-gray-900">Your cart is empty</h2>
+          <p className="mt-2 text-gray-600">Start adding items to your cart to continue shopping</p>
+          <button
+            onClick={() => navigate('/')}
+            className="mt-8 rounded-lg bg-brand px-8 py-3 text-sm font-semibold text-white transition hover:bg-brand/90 focus:outline-none focus:ring-2 focus:ring-brand/20"
+          >
+            Browse Products
+          </button>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="grid gap-10 py-10 lg:grid-cols-[2fr,1fr]">
-      <div className="space-y-4">
-        {items.map((item) => (
-          <div
-            key={`${item.id}-${item.size}`}
-            className="flex items-center justify-between rounded-2xl border border-gray-100 bg-white p-4 shadow-sm"
-          >
-            <div className="flex gap-4">
+    <div className="py-8">
+      <h1 className="mb-8 text-3xl font-bold text-gray-900">Shopping Cart</h1>
+      <div className="grid gap-8 lg:grid-cols-[2fr,1fr]">
+        <div className="space-y-4">
+          {items.map((item) => (
+            <div
+              key={`${item.id}-${item.size}`}
+              className="flex gap-4 rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition hover:shadow-md"
+            >
               <img
                 src={item.image}
                 alt={item.name}
-                className="h-24 w-24 rounded-xl object-cover"
+                className="h-32 w-32 flex-shrink-0 rounded-xl object-cover"
               />
-              <div>
-                <p className="text-sm uppercase text-gray-400">Size {item.size}</p>
-                <h4 className="text-lg font-semibold text-gray-900">{item.name}</h4>
-                <p className="text-sm text-gray-500">{formatCurrency(item.price)}</p>
-                <div className="mt-2 flex items-center gap-3">
-                  <label className="text-xs text-gray-500">
-                    Qty
+              <div className="flex flex-1 flex-col justify-between">
+                <div>
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <h4 className="text-lg font-semibold text-gray-900">{item.name}</h4>
+                      <p className="mt-1 text-sm text-gray-500">Size: {item.size}</p>
+                      <p className="mt-1 text-sm font-medium text-gray-700">
+                        {formatCurrency(item.price)} each
+                      </p>
+                    </div>
+                    <p className="text-xl font-bold text-gray-900">
+                      {formatCurrency(item.price * item.quantity)}
+                    </p>
+                  </div>
+                </div>
+                <div className="mt-4 flex items-center gap-4">
+                  <label className="flex items-center gap-2 text-sm text-gray-700">
+                    Quantity:
                     <input
                       type="number"
                       min="1"
@@ -50,30 +66,29 @@ export function CartPage() {
                       onChange={(event) =>
                         updateQuantity(item.id, item.size, Number(event.target.value))
                       }
-                      className="ml-2 w-16 rounded-md border border-gray-200 px-2 py-1 text-sm"
+                      className="w-20 rounded-lg border border-gray-300 px-3 py-1.5 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
                     />
                   </label>
                   <button
                     onClick={() => removeItem(item.id, item.size)}
-                    className="text-sm text-rose-500"
+                    className="text-sm font-medium text-rose-600 hover:text-rose-700 transition-colors"
                   >
                     Remove
                   </button>
                 </div>
               </div>
             </div>
-            <p className="text-lg font-semibold text-gray-900">
-              {formatCurrency(item.price * item.quantity)}
-            </p>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
-      <CartSummary
-        total={totals.totalAmount}
-        ctaLabel="Proceed to Checkout"
-        onAction={() => navigate('/checkout')}
-      />
+        <div className="lg:sticky lg:top-24 lg:h-fit">
+          <CartSummary
+            total={totals.totalAmount}
+            ctaLabel="Proceed to Checkout"
+            onAction={() => navigate('/checkout')}
+          />
+        </div>
+      </div>
     </div>
   );
 }

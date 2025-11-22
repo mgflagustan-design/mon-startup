@@ -145,72 +145,92 @@ export function CheckoutPage() {
   }
 
   return (
-    <div className="grid gap-10 py-10 lg:grid-cols-[1.5fr,1fr]">
-      <form
-        onSubmit={handleSubmit}
-        className="rounded-2xl border border-gray-100 bg-white p-6 shadow-sm space-y-5"
-      >
-        <div>
-          <h2 className="text-xl font-semibold text-gray-900">Shipping Information</h2>
-          <p className="text-sm text-gray-500">
-            We ship nationwide. After checkout you will receive payment instructions.
-          </p>
-        </div>
-
-        {error && (
-          <div className="rounded-md bg-rose-50 p-4 text-sm text-rose-600">
-            <p className="font-semibold">Checkout Error</p>
-            <p className="mt-1">{error}</p>
-            <div className="mt-3 space-y-2 text-xs text-rose-500">
-              <p><strong>Current API URL:</strong> {import.meta.env.VITE_API_URL || 'http://localhost:4000/api (default)'}</p>
-              <p className="mt-2"><strong>To fix this:</strong></p>
-              <ol className="ml-4 list-decimal space-y-1">
-                <li>Deploy your backend to Railway/Render (see DEPLOYMENT.md)</li>
-                <li>In Vercel → Settings → Environment Variables, add: <code className="bg-rose-100 px-1 rounded">VITE_API_URL</code> = <code className="bg-rose-100 px-1 rounded">https://your-backend-url.com/api</code></li>
-                <li>Redeploy your Vercel project</li>
-              </ol>
-            </div>
+    <div className="py-8">
+      <h1 className="mb-8 text-3xl font-bold text-gray-900">Checkout</h1>
+      <div className="grid gap-8 lg:grid-cols-[1.5fr,1fr]">
+        <form
+          onSubmit={handleSubmit}
+          className="rounded-2xl border border-gray-200 bg-white p-8 shadow-lg space-y-6"
+        >
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900">Shipping Information</h2>
+            <p className="mt-2 text-gray-600">
+              We ship nationwide. After checkout you will receive payment instructions via email.
+            </p>
           </div>
-        )}
 
-        {['fullName', 'email', 'phone'].map((field) => (
-          <label key={field} className="block text-sm font-medium text-gray-600">
-            {field === 'fullName' && 'Full Name'}
-            {field === 'email' && 'Email'}
-            {field === 'phone' && 'Phone Number'}
-            <input
-              name={field}
-              type={field === 'email' ? 'email' : 'text'}
-              value={form[field]}
-              onChange={updateField}
+          {error && (
+            <div className="rounded-lg bg-rose-50 border border-rose-200 p-5 text-sm text-rose-700">
+              <p className="font-semibold mb-2">Checkout Error</p>
+              <p className="mb-3">{error}</p>
+              <div className="mt-3 space-y-2 text-xs text-rose-600 bg-rose-100/50 p-3 rounded">
+                <p><strong>Current API URL:</strong> {import.meta.env.VITE_API_URL || 'http://localhost:4000/api (default)'}</p>
+                <p className="mt-2"><strong>To fix this:</strong></p>
+                <ol className="ml-4 list-decimal space-y-1">
+                  <li>Deploy your backend to Railway/Render (see DEPLOYMENT.md)</li>
+                  <li>In Vercel → Settings → Environment Variables, add: <code className="bg-rose-200 px-1 rounded">VITE_API_URL</code> = <code className="bg-rose-200 px-1 rounded">https://your-backend-url.com/api</code></li>
+                  <li>Redeploy your Vercel project</li>
+                </ol>
+              </div>
+            </div>
+          )}
+
+          {['fullName', 'email', 'phone'].map((field) => (
+            <label key={field} className="block">
+              <span className="text-sm font-semibold text-gray-700">
+                {field === 'fullName' && 'Full Name'}
+                {field === 'email' && 'Email Address'}
+                {field === 'phone' && 'Phone Number'}
+              </span>
+              <input
+                name={field}
+                type={field === 'email' ? 'email' : 'text'}
+                value={form[field]}
+                onChange={updateField}
+                required
+                className="mt-2 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20 transition"
+                placeholder={
+                  field === 'fullName' ? 'John Doe'
+                  : field === 'email' ? 'john@example.com'
+                  : '+63 912 345 6789'
+                }
+              />
+            </label>
+          ))}
+
+          <label className="block">
+            <span className="text-sm font-semibold text-gray-700">Shipping Address</span>
+            <textarea
+              name="address"
+              rows="4"
               required
-              className="mt-2 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-brand focus:outline-none"
+              value={form.address}
+              onChange={updateField}
+              className="mt-2 w-full rounded-lg border border-gray-300 px-4 py-3 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20 transition resize-none"
+              placeholder="Street address, City, Province, Postal Code"
             />
           </label>
-        ))}
 
-        <label className="block text-sm font-medium text-gray-600">
-          Shipping Address
-          <textarea
-            name="address"
-            rows="3"
-            required
-            value={form.address}
-            onChange={updateField}
-            className="mt-2 w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:border-brand focus:outline-none"
-          />
-        </label>
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full rounded-lg bg-brand px-6 py-4 text-sm font-semibold text-white transition hover:bg-brand/90 disabled:opacity-60 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-brand/20"
+          >
+            {loading ? (
+              <span className="flex items-center justify-center gap-2">
+                <span className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent"></span>
+                Processing...
+              </span>
+            ) : (
+              'Complete Order & Get Payment QR'
+            )}
+          </button>
+        </form>
 
-        <button
-          type="submit"
-          disabled={loading}
-          className="w-full rounded-md bg-brand px-4 py-3 text-sm font-semibold text-white disabled:opacity-60"
-        >
-          {loading ? 'Generating QR...' : 'Pay via GCash / Bank Transfer / QR Ph'}
-        </button>
-      </form>
-
-      <CartSummary total={totals.totalAmount} />
+        <div className="lg:sticky lg:top-24 lg:h-fit">
+          <CartSummary total={totals.totalAmount} />
+        </div>
+      </div>
     </div>
   );
 }

@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react';
 import { getOrders, updateOrderStatus } from '../api/client.js';
 import { StatusBadge } from '../components/StatusBadge.jsx';
 import { formatCurrency } from '../utils/format.js';
+import { useAdmin } from '../state/AdminContext.jsx';
 
 export function AdminDashboardPage() {
+  const { adminToken } = useAdmin();
   const [status, setStatus] = useState('paid');
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [adminToken, setAdminToken] = useState(() => localStorage.getItem('admin-token') || '');
   const [actionLoadingId, setActionLoadingId] = useState(null);
   const [actionMessage, setActionMessage] = useState(null);
   const [actionError, setActionError] = useState(null);
@@ -22,18 +23,9 @@ export function AdminDashboardPage() {
       .finally(() => setLoading(false));
   }, [status, refreshKey]);
 
-  function handleTokenChange(value) {
-    setAdminToken(value);
-    if (value) {
-      localStorage.setItem('admin-token', value);
-    } else {
-      localStorage.removeItem('admin-token');
-    }
-  }
-
   async function handleStatusUpdate(orderId, nextStatus) {
     if (!adminToken) {
-      setActionError('Set the admin token first to update orders.');
+      setActionError('Admin token is required to update orders.');
       return;
     }
 
@@ -51,121 +43,150 @@ export function AdminDashboardPage() {
       );
       setActionMessage(`Order ${orderId} marked as ${nextStatus}.`);
       setRefreshKey((key) => key + 1);
+      setTimeout(() => setActionMessage(null), 5000);
     } catch (err) {
       setActionError(err.message || 'Unable to update order.');
+      setTimeout(() => setActionError(null), 5000);
     } finally {
       setActionLoadingId(null);
     }
   }
 
+  const stats = {
+    total: orders.length,
+    paid: orders.filter((o) => o.status === 'paid').length,
+    pending: orders.filter((o) => o.status === 'pending').length,
+    failed: orders.filter((o) => o.status === 'failed').length,
+  };
+
   return (
-    <div className="py-10">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-semibold text-gray-900">Orders</h1>
-          <p className="text-sm text-gray-500">
-            Monitor payments in real time. Webhooks auto-update the list.
-          </p>
-        </div>
-        <select
-          value={status}
-          onChange={(event) => setStatus(event.target.value)}
-          className="rounded-md border border-gray-200 bg-white px-3 py-2 text-sm"
-        >
-          <option value="paid">Paid</option>
-          <option value="pending">Pending</option>
-          <option value="failed">Failed</option>
-          <option value="all">All</option>
-        </select>
+    <div className="py-8">
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
+        <p className="mt-2 text-gray-600">Monitor and manage orders in real time</p>
       </div>
 
-      <div className="mt-4 grid gap-4 rounded-xl border border-gray-100 bg-white p-4 shadow-sm sm:grid-cols-2">
-        <div>
-          <label className="text-sm font-medium text-gray-700">Admin token</label>
-          <input
-            type="password"
-            value={adminToken}
-            onChange={(event) => handleTokenChange(event.target.value)}
-            placeholder="Enter token to unlock status actions"
-            className="mt-1 w-full rounded-md border border-gray-200 px-3 py-2 text-sm focus:border-brand focus:outline-none"
-          />
-          <p className="mt-1 text-xs text-gray-500">
-            Stored locally only. Required for Mark as Paid actions.
-          </p>
+      {/* Stats Cards */}
+      <div className="mb-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+          <p className="text-sm text-gray-600">Total Orders</p>
+          <p className="mt-2 text-3xl font-bold text-gray-900">{stats.total}</p>
         </div>
-        <div className="text-sm text-gray-600">
-          <p className="font-medium text-gray-900">Manual payment verification</p>
-          <p>
-            When you receive a buyer&apos;s receipt, mark their order as paid here. They will
-            automatically get the confirmation email.
-          </p>
+        <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-5 shadow-sm">
+          <p className="text-sm text-emerald-700">Paid</p>
+          <p className="mt-2 text-3xl font-bold text-emerald-700">{stats.paid}</p>
+        </div>
+        <div className="rounded-xl border border-amber-200 bg-amber-50 p-5 shadow-sm">
+          <p className="text-sm text-amber-700">Pending</p>
+          <p className="mt-2 text-3xl font-bold text-amber-700">{stats.pending}</p>
+        </div>
+        <div className="rounded-xl border border-rose-200 bg-rose-50 p-5 shadow-sm">
+          <p className="text-sm text-rose-700">Failed</p>
+          <p className="mt-2 text-3xl font-bold text-rose-700">{stats.failed}</p>
         </div>
       </div>
 
+      {/* Filter and Info */}
+      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex items-center gap-3">
+          <label className="text-sm font-medium text-gray-700">Filter by status:</label>
+          <select
+            value={status}
+            onChange={(event) => setStatus(event.target.value)}
+            className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/20"
+          >
+            <option value="paid">Paid</option>
+            <option value="pending">Pending</option>
+            <option value="failed">Failed</option>
+            <option value="all">All</option>
+          </select>
+        </div>
+        <div className="rounded-lg bg-blue-50 border border-blue-200 p-3 text-sm text-blue-700">
+          <p className="font-medium">💡 Tip:</p>
+          <p>When you receive a payment receipt, mark the order as paid to send the confirmation email automatically.</p>
+        </div>
+      </div>
+
+      {/* Messages */}
       {actionMessage && (
-        <p className="mt-4 rounded-md bg-emerald-50 px-4 py-2 text-sm text-emerald-700">
-          {actionMessage}
-        </p>
+        <div className="mb-4 rounded-lg bg-emerald-50 border border-emerald-200 p-4 text-sm text-emerald-700">
+          ✓ {actionMessage}
+        </div>
       )}
       {actionError && (
-        <p className="mt-4 rounded-md bg-rose-50 px-4 py-2 text-sm text-rose-600">{actionError}</p>
+        <div className="mb-4 rounded-lg bg-rose-50 border border-rose-200 p-4 text-sm text-rose-700">
+          ⚠ {actionError}
+        </div>
       )}
 
-      {loading && <p className="mt-6 text-gray-500">Loading orders...</p>}
-      {error && <p className="mt-6 text-rose-500">{error}</p>}
+      {/* Orders Table */}
+      {loading && (
+        <div className="py-20 text-center">
+          <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-brand border-r-transparent"></div>
+          <p className="mt-4 text-gray-500">Loading orders...</p>
+        </div>
+      )}
+
+      {error && (
+        <div className="rounded-lg bg-rose-50 border border-rose-200 p-4 text-rose-700">
+          {error}
+        </div>
+      )}
 
       {!loading && !error && (
-        <div className="mt-6 overflow-x-auto rounded-xl border border-gray-100 bg-white shadow-sm">
-          <table className="w-full text-left text-sm">
-            <thead className="bg-gray-50 text-xs uppercase text-gray-500">
-              <tr>
-                <th className="px-4 py-3">Order ID</th>
-                <th className="px-4 py-3">Customer</th>
-                <th className="px-4 py-3">Amount</th>
-                <th className="px-4 py-3">Status</th>
-                <th className="px-4 py-3">Payment Method</th>
-                <th className="px-4 py-3">Updated</th>
-                <th className="px-4 py-3 text-right">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {orders.map((order) => (
-                <tr key={order.id} className="border-t border-gray-50">
-                  <td className="px-4 py-3 font-mono text-xs text-gray-500">{order.id}</td>
-                  <td className="px-4 py-3 text-gray-900">{order.customerName}</td>
-                  <td className="px-4 py-3 font-semibold text-gray-900">
-                    {formatCurrency(order.total)}
-                  </td>
-                  <td className="px-4 py-3">
-                    <StatusBadge status={order.status} />
-                  </td>
-                  <td className="px-4 py-3 text-gray-600">
-                    {order.paymentMethod || '—'}
-                  </td>
-                  <td className="px-4 py-3 text-gray-500">
-                    {new Date(order.updatedAt).toLocaleString()}
-                  </td>
-                  <td className="px-4 py-3 text-right">
-                    {order.status !== 'paid' ? (
-                      <button
-                        onClick={() => handleStatusUpdate(order.id, 'paid')}
-                        disabled={actionLoadingId === `paid-${order.id}`}
-                        className="rounded-md bg-brand px-3 py-2 text-xs font-semibold text-white disabled:opacity-60"
-                      >
-                        {actionLoadingId === `paid-${order.id}` ? 'Updating…' : 'Mark as Paid'}
-                      </button>
-                    ) : (
-                      <span className="text-xs text-gray-400">Paid</span>
-                    )}
-                  </td>
+        <div className="overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-sm">
+              <thead className="bg-gray-50 border-b border-gray-200">
+                <tr>
+                  <th className="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-gray-700">Order ID</th>
+                  <th className="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-gray-700">Customer</th>
+                  <th className="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-gray-700">Amount</th>
+                  <th className="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-gray-700">Status</th>
+                  <th className="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-gray-700">Payment</th>
+                  <th className="px-6 py-4 text-xs font-semibold uppercase tracking-wider text-gray-700">Updated</th>
+                  <th className="px-6 py-4 text-right text-xs font-semibold uppercase tracking-wider text-gray-700">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="divide-y divide-gray-100">
+                {orders.map((order) => (
+                  <tr key={order.id} className="hover:bg-gray-50 transition-colors">
+                    <td className="px-6 py-4 font-mono text-xs text-gray-600">{order.id}</td>
+                    <td className="px-6 py-4 font-medium text-gray-900">{order.customerName}</td>
+                    <td className="px-6 py-4 font-bold text-gray-900">
+                      {formatCurrency(order.total)}
+                    </td>
+                    <td className="px-6 py-4">
+                      <StatusBadge status={order.status} />
+                    </td>
+                    <td className="px-6 py-4 text-gray-600">
+                      {order.paymentMethod || '—'}
+                    </td>
+                    <td className="px-6 py-4 text-sm text-gray-500">
+                      {new Date(order.updatedAt).toLocaleString()}
+                    </td>
+                    <td className="px-6 py-4 text-right">
+                      {order.status !== 'paid' ? (
+                        <button
+                          onClick={() => handleStatusUpdate(order.id, 'paid')}
+                          disabled={actionLoadingId === `paid-${order.id}` || !adminToken}
+                          className="rounded-lg bg-brand px-4 py-2 text-xs font-semibold text-white transition hover:bg-brand/90 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-brand/20"
+                        >
+                          {actionLoadingId === `paid-${order.id}` ? 'Updating…' : 'Mark as Paid'}
+                        </button>
+                      ) : (
+                        <span className="text-xs font-medium text-emerald-600">✓ Paid</span>
+                      )}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
           {!orders.length && (
-            <p className="px-4 py-6 text-center text-sm text-gray-500">
-              No orders found for this status.
-            </p>
+            <div className="px-6 py-12 text-center">
+              <p className="text-gray-500">No orders found for this status.</p>
+            </div>
           )}
         </div>
       )}
