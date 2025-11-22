@@ -15,7 +15,7 @@ const env = {
   xenditApiKey: process.env.XENDIT_API_KEY || '',
   xenditCallbackToken: process.env.XENDIT_CALLBACK_TOKEN || '',
   paymentsMode: (process.env.PAYMENTS_MODE || 'xendit').toLowerCase(),
-  adminToken: process.env.ADMIN_TOKEN || '',
+  adminToken: (process.env.ADMIN_TOKEN || '').trim(),
   emailFrom: process.env.EMAIL_FROM || 'orders@example.com',
   emailHost: process.env.EMAIL_HOST || '',
   emailPort: Number(process.env.EMAIL_PORT || 587),
