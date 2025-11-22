@@ -37,6 +37,19 @@ async function start() {
     res.json({ status: 'ok', timestamp: new Date().toISOString() });
   });
 
+  // Admin token verification endpoint (for debugging)
+  app.get('/api/admin/verify', (req, res) => {
+    const isConfigured = !!(env.adminToken && env.adminToken.trim());
+    res.json({
+      adminTokenConfigured: isConfigured,
+      adminTokenLength: isConfigured ? env.adminToken.trim().length : 0,
+      adminTokenPrefix: isConfigured ? `${env.adminToken.trim().substring(0, 4)}...` : 'not set',
+      hint: isConfigured 
+        ? 'ADMIN_TOKEN is configured. Use this exact value when logging in at /admin/login'
+        : 'ADMIN_TOKEN is not set. Add it to your environment variables on Render.',
+    });
+  });
+
   app.use('/api/products', productRoutes);
   app.use('/api/checkout', checkoutRoutes);
   app.use('/api/orders', orderRoutes);
