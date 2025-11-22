@@ -18,6 +18,21 @@ async function start() {
   app.use(express.json({ limit: '1mb' }));
   app.use(httpLogger);
 
+  app.get('/', (req, res) => {
+    res.json({ 
+      message: 'Mon Threads E-Commerce API',
+      status: 'running',
+      endpoints: {
+        products: '/api/products',
+        checkout: '/api/checkout',
+        orders: '/api/orders',
+        webhook: '/api/payment/webhook',
+        health: '/api/health'
+      },
+      timestamp: new Date().toISOString()
+    });
+  });
+
   app.get('/api/health', (req, res) => {
     res.json({ status: 'ok', timestamp: new Date().toISOString() });
   });
